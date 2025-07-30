@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 
+
 # Create your models here.
 class Shop(models.Model):
     """ Define shop details and models. """
@@ -8,7 +9,7 @@ class Shop(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='shop-owner'
+        related_name='shop_owner'
     )
     work_field = models.CharField(max_length=255, blank=True, null=True)
     date_created = models.DateField(auto_now_add=True, editable=False)

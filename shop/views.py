@@ -1,17 +1,19 @@
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import permissions, generics
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
-from shop.models import Shop
 from shop.permissions import IsOwnerOrReadOnly
-from shop.serializer import ShopSerializer
+from shop.serializer import ShopSerializer, ShopListSerializer
 
 
 # Create your views here.
-class ShopViewSet(viewsets.ModelViewSet):
-    """ view to create update and return a shop. """
-    queryset = Shop.objects.all()
+class ShopListView(generics.ListAPIView):
+    """ view to return list of shops for authenticated users. """
     serializer_class = ShopSerializer
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = []
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+
+class ShopDetailView(RetrieveUpdateDestroyAPIView):
+    """ Retrieve ,Update ,Destroy a shop just for its owner. """
+    serializer_class = ShopListSerializer
+    permission_classes = [IsOwnerOrReadOnly]
