@@ -14,14 +14,23 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password, **extra_fields):
         """ Create,Save and return a user. """
+        # if not email:
+        #     raise ValueError('Email field is necessary')
+        # email = self.normalize_email(email)
+        # user = self.model(email=email, **extra_fields)
+        # user.set_password(password)
+        # user.save(using=self._db)
+        #
+        # return user
         if not email:
             raise ValueError('Email field is necessary')
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        user = self.model(email=email,**extra_fields)
         user.set_password(password)
-        user.save(using=self._db)
+        user.save(using=self.db)
 
         return user
+
 
     def create_superuser(self, email, password):
         """ Create and save a superuser. """
