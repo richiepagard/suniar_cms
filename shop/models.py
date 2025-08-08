@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Shop(models.Model):
@@ -11,8 +11,14 @@ class Shop(models.Model):
         on_delete=models.CASCADE,
         related_name='shop_owner'
     )
+    # members = models.ManyToManyField(
+    #     get_user_model(),
+    #     related_name='shop_user',
+    #
+    # )
     work_field = models.CharField(max_length=255, blank=True, null=True)
     date_created = models.DateField(auto_now_add=True, editable=False)
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         """ Return Shop name. """
