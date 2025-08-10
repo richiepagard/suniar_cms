@@ -8,13 +8,13 @@ class ShopAdmin(admin.ModelAdmin):
     """ Define admin page for Shop page. """
     ordering = ['id', 'name']
     empty_value_display = '-empty-'
-    list_display = ['name', 'owner', 'is_active','work_field']
+    list_display = ['name', 'owner', 'is_active', 'work_field']
 
     fieldsets = [
         (
             None, {'fields': ('name', 'owner')}
         ),
-        ('جزئیات', {'fields': ('work_field', 'date_created', 'is_active')})
+        ('جزئیات', {'fields': ('work_field', 'date_created', 'is_active', 'members', 'category')})
     ]
 
     search_fields = ['id', 'name']
@@ -24,7 +24,7 @@ class ShopAdmin(admin.ModelAdmin):
         (None,
          {
              'classes': ('wide',),
-             'fields': ('name', 'owner', 'work_field', 'is_active')
+             'fields': ('name', 'owner', 'work_field', 'is_active', 'members', 'category')
          }),
     )
 
