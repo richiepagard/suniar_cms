@@ -1,32 +1,31 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
 from shop.models import Shop
 
 
-# Register your models here.
+@admin.register(Shop)
 class ShopAdmin(admin.ModelAdmin):
-    """ Define admin page for Shop page. """
+    list_display = ['name', 'owner', 'is_active', 'work_field']
+    search_fields = ['id', 'name']
+    readonly_fields = ['date_created']
     ordering = ['id', 'name']
     empty_value_display = '-empty-'
-    list_display = ['name', 'owner', 'is_active', 'work_field']
 
     fieldsets = [
         (
-            None, {'fields': ('name', 'owner')}
+            _('Base Info'), {'fields': ('name', 'owner')}
         ),
-        ('جزئیات', {'fields': ('work_field', 'date_created', 'is_active', 'members', 'category')})
+        (_('Detail'), {
+            'fields': ('work_field', 'date_created', 'is_active', 'members', 'category')
+            }
+        )
     ]
 
-    search_fields = ['id', 'name']
-    readonly_fields = ['date_created']
-
     add_fieldsets = (
-        (None,
+        (_('Add new shop'),
          {
              'classes': ('wide',),
              'fields': ('name', 'owner', 'work_field', 'is_active', 'members', 'category')
          }),
     )
-
-
-admin.site.register(Shop, ShopAdmin)

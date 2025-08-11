@@ -1,14 +1,18 @@
+from django.db import models
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.db import models
 
 from category.models import Category
 
 
-# Create your models here.
 class Shop(models.Model):
-    """ Define shop details and models. """
-    name = models.CharField(max_length=255, unique=True)
+    """
+    Define shop details and models.
+    """
+    name = models.CharField(
+        max_length=255,
+        unique=True
+    )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -19,11 +23,27 @@ class Shop(models.Model):
         related_name='shop_user',
         blank=True
     )
-    work_field = models.CharField(max_length=255, blank=True, null=True)
-    date_created = models.DateField(auto_now_add=True, editable=False)
+    work_field = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
+    created_at = models.DateField(
+        auto_now_add=True,
+        null=True,
+        blank=True
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        null=True,
+        blank=True,
+    )
     is_active = models.BooleanField(default=False)
-    category = models.ManyToManyField(Category, blank=True)
+    categories = models.ManyToManyField(
+        Category,
+        blank=True
+    )
 
     def __str__(self):
         """ Return Shop name. """
-        return self.name
+        return f"{self.name} - {self.owner}"
