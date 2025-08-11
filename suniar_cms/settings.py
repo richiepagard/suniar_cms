@@ -35,12 +35,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # External apps
     'rest_framework',
     'rest_framework.authtoken',
     'drf_spectacular',
-    'user',
-    'shop',
-    'category',
+    # Local apps
+    'user.apps.UserConfig',
+    'shop.apps.ShopConfig',
+    'category.apps.CategoryConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,10 +126,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
+    # Define default schemas
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    # Define default permissions
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
+    # Define deafult authentication method
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication'
-
     ]
 }
