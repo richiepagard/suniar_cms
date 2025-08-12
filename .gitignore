@@ -115,3 +115,6 @@ ehthumbs.db
 
 # Others
 *.sqlite3
+
+# Swap files
+*.swp
