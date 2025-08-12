@@ -8,7 +8,7 @@ from shop.models import Shop
 class ShopAdmin(admin.ModelAdmin):
     list_display = ['name', 'owner', 'is_active', 'work_field']
     search_fields = ['id', 'name']
-    readonly_fields = ['date_created']
+    readonly_fields = ['created_at', 'updated_at']
     ordering = ['id', 'name']
     empty_value_display = '-empty-'
 
