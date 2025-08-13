@@ -6,7 +6,7 @@ from rest_framework import (
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 
-from user.serializers import UserSerializer, AuthTokenSerializer
+from accounts.serializers import UserSerializer, AuthTokenSerializer
 
 
 class CreateUserView(generics.CreateAPIView):
