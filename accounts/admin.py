@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from shop.models import Shop
-from user.models import User
+from accounts.models import User
 
 
 class MemberShipInLine(admin.TabularInline):
