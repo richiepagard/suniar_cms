@@ -1,11 +1,11 @@
 from django.urls import path
 
-from accounts import views
+from accounts.views import UserLoginView
 
 app_name = 'accounts'
 
-urlpatterns = [
-    path('create/', views.CreateUserView.as_view(), name='create'),
-    path('token/', views.CreateTokenView.as_view(), name='token'),
-    path('me', views.ManageUserView.as_view(), name='me')
+USER_AUTHENTICATION_URLS = [
+    path("users/login/", UserLoginView.as_view(), name="user-login"),
 ]
+
+urlpatterns = USER_AUTHENTICATION_URLS
