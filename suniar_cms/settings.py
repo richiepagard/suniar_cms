@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'phonenumber_field',
     # Local apps
-    'user.apps.UserConfig',
+    'accounts.apps.AccountsConfig',
     'shop.apps.ShopConfig',
     'category.apps.CategoryConfig',
 ]
@@ -112,7 +112,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'user.User'
+# Default user model``
+AUTH_USER_MODEL = 'accounts.User'
 
 REST_FRAMEWORK = {
     # Define default schemas

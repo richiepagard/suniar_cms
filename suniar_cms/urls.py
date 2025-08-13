@@ -17,5 +17,5 @@ urlpatterns = [
         name='api-docs'
     ),
     # Local endpoints
-    path('api/user/', include('user.urls')),
+    path('api/accounts/', include('accounts.urls')),
 ]
