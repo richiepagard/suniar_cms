@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'drf_spectacular',
     'phonenumber_field',
+    'rest_framework_simplejwt',
     # Local apps
     'accounts.apps.AccountsConfig',
     'shop.apps.ShopConfig',
@@ -122,6 +123,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
     # Define deafult authentication method
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication'
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
 }
