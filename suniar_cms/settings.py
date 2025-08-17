@@ -31,8 +31,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     # Local apps
     'accounts.apps.AccountsConfig',
-    'shop.apps.ShopConfig',
     'category.apps.CategoryConfig',
+    'product.apps.ProductConfig'
 ]
 
 MIDDLEWARE = [
